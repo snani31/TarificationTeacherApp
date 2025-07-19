@@ -1,0 +1,3 @@
+[submodule "TarificationTeacherAppDataModel"]
+	path = TarificationTeacherAppDataModel
+	url = https://github.com/snani31/TarificationTeacherAppDataModel.git
