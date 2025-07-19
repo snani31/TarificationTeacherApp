@@ -1,0 +1,260 @@
+﻿<Window x:Class="TerificationTeacherApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TerificationTeacherApp"
+        xmlns:view="clr-namespace:TerificationTeacherApp.View"
+        xmlns:vms="clr-namespace:TerificationTeacherApp.ViewModel"
+        xmlns:Menu="clr-namespace:TerificationTeacherApp.CustomControls"
+        mc:Ignorable="d"
+        WindowStyle="none"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Title="MainWindow" 
+        Height="670" 
+        Width="800"
+        AllowsTransparency="True"
+        Background="Transparent">
+    <Border
+        MouseDown="Border_MouseDown"
+        Background= "#272c35"
+        CornerRadius="20"
+        ClipToBounds="True"
+            >
+        <Grid ClipToBounds="True">
+            <Grid.RowDefinitions>
+                <RowDefinition 
+                    Height="50"
+                    />
+                <RowDefinition
+                    Height="50"
+                    />
+                <RowDefinition/>
+
+            </Grid.RowDefinitions>
+            <Border
+                Grid.Column="0"
+                Grid.ColumnSpan="1"
+                CornerRadius="20,20,0,0"
+                Background="#292f45"
+                BorderThickness="0"
+                >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="50"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <Button Grid.Column="2"
+                            Command="{Binding ExitApplication}"
+                            ToolTip="Закрыть">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border BorderThickness="0" Margin="0" Name="brd" Background="Transparent" CornerRadius="10 20 0 10">
+                                    <Image Margin="5" Source="Styles\Icons\PowerOffButtonIcon.png"/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="brd" Property="Background" Value="#a1261d"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                    <Button Grid.Column="1"
+                            Command="{Binding CollapseApplication}"
+                            ToolTip="Свернуть">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border BorderThickness="0" Margin="0" Name="brd" Background="Transparent" CornerRadius="10 20 0 10">
+                                    <Image Margin="5" Source="Styles\Icons\CollapseWindpwIcon-50.png"/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="brd" Property="Background" Value="#3c4452"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                </Grid>
+            </Border>
+            <Border 
+                Grid.Row="1" 
+                Grid.Column="0" 
+                Grid.ColumnSpan="2"
+                Background="#292f45">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Menu:MenuRadiobutton
+                    IsChecked="True"
+                    Command="{Binding GoAuthorisationPage}"
+                    Grid.Column="0" 
+                    Style="{StaticResource MenuRadiobuttonStyle}"
+                        >
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="4*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image
+                                Grid.Column="0"
+                                Margin="20 5"
+                                HorizontalAlignment="Left"
+                                Source="\Styles\Icons\MenuNavigateButtonIcons\AuthorizationIcon-50.png"/>
+
+                            <TextBlock 
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Left"
+                                Grid.Column="1"
+                                Text="Авторизация" 
+                                Style="{StaticResource SpanDefoult}"
+                                FontSize="16"
+                                FontWeight="DemiBold"
+                                />
+                        </Grid>
+                    </Menu:MenuRadiobutton>
+
+                    <Menu:MenuRadiobutton
+                    IsChecked="{Binding TarificationPageChaked}"
+                    IsEnabled="{Binding UserIsAuthorised }"
+                    Command="{Binding GoTarificationCommand}" 
+                    Grid.Column="1" 
+                    Style="{StaticResource MenuRadiobuttonStyle}"
+                        >
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="4*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image
+                                Grid.Column="0"
+                                Margin="20 5"
+                                HorizontalAlignment="Left"
+                                Source="\Styles\Icons\MenuNavigateButtonIcons\TarificationIcon-50.png"/>
+                            
+                            <TextBlock 
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Left"
+                                Grid.Column="1"
+                                Text="Тарификация" 
+                                Style="{StaticResource SpanDefoult}"
+                                FontSize="16"
+                                FontWeight="DemiBold"
+                                />
+                        </Grid>
+                    </Menu:MenuRadiobutton>
+
+                    <Menu:MenuRadiobutton
+                    IsEnabled="{Binding UserIsAuthorised }"
+                    Command="{Binding GoStudentsTusksPage}" 
+                    Grid.Column="2" 
+                    Style="{StaticResource MenuRadiobuttonStyle}"
+                        >
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="4*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image
+                                Grid.Column="0"
+                                Margin="20 5"
+                                HorizontalAlignment="Left"
+                                Source="\Styles\Icons\MenuNavigateButtonIcons\StudentIcon-50.png"/>
+
+                            <TextBlock 
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Left"
+                                Grid.Column="1"
+                                Text="Студенты" 
+                                Style="{StaticResource SpanDefoult}"
+                                FontSize="16"
+                                FontWeight="DemiBold"
+                                />
+                        </Grid>
+                    </Menu:MenuRadiobutton>
+
+                    <Menu:MenuRadiobutton
+                    IsEnabled="{Binding UserIsAuthorised }"
+                    Command="{Binding GoAboutProgrammPage}" 
+                    Grid.Column="3" 
+                    Style="{StaticResource MenuRadiobuttonStyle}"
+                        >
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="4*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image
+                                Grid.Column="0"
+                                Margin="20 5"
+                                HorizontalAlignment="Left"
+                                Source="\Styles\Icons\MenuNavigateButtonIcons\AboutProgrammIcon-50.png"/>
+
+                            <TextBlock 
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Left"
+                                Grid.Column="1"
+                                Text="О программе" 
+                                Style="{StaticResource SpanDefoult}"
+                                FontSize="16"
+                                FontWeight="DemiBold"
+                                />
+                        </Grid>
+                    </Menu:MenuRadiobutton>
+
+                </Grid>
+            </Border>
+            <StackPanel
+                    Grid.Row="2" 
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2" >
+                <Border
+                    Margin="20"
+                    HorizontalAlignment="Center"
+                    MinWidth="750"
+                    MinHeight="520"
+                    Background="#252930"
+                    CornerRadius="25">
+                    <Grid>
+                        <Grid.Resources>
+                            <DataTemplate DataType="{x:Type vms:AuthorisationPageViewModel}">
+                                <view:UserControl1/>
+                            </DataTemplate>
+                            <DataTemplate DataType="{x:Type vms:TarificationPageViewModel}">
+                                <view:TarificationTeacherData/>
+                            </DataTemplate>
+                            <DataTemplate DataType="{x:Type vms:StudentsTusksDataViewModel}">
+                                <view:StudentTusksDataPage/>
+                            </DataTemplate>
+                            <DataTemplate DataType="{x:Type vms:SelectedTuskDataViewModel}">
+                                <view:SelectedTuskDataPage/>
+                            </DataTemplate>
+                            <DataTemplate DataType="{x:Type vms:SelectedUnratedTuskDataViewModel}">
+                                <view:SelectedTuskNewGradeDataPage/>
+                            </DataTemplate>
+                            <DataTemplate DataType="{x:Type vms:AddNewTuskViewModel}">
+                                <view:AddNewTuskPage/>
+                            </DataTemplate>
+                            <DataTemplate DataType="{x:Type vms:AboutProgrammPageViewModel}">
+                                <view:AboutProgrammPage/>
+                            </DataTemplate>
+                        </Grid.Resources>
+                        <ContentControl Content="{Binding CurrentViewModel}" />
+                    </Grid>
+                </Border>
+            </StackPanel>
+        </Grid>
+
+    </Border>
+</Window>

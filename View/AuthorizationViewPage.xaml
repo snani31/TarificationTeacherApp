@@ -1,0 +1,75 @@
+﻿<UserControl x:Class="TerificationTeacherApp.View.UserControl1"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TerificationTeacherApp.View" xmlns:customcontrols="clr-namespace:TerificationTeacherApp.CustomControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="520" d:DesignWidth="750">
+    <Border
+        BorderThickness="0"
+        Background="#252930"
+        CornerRadius="25">
+        <Grid Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock 
+                Style="{StaticResource SpanDefoult}"
+                Margin="105 0 0 0"
+                VerticalAlignment="Bottom"
+                FontSize="20"
+                Grid.Row="0" 
+                Grid.Column="0" 
+                Text="Введите логин" FontFamily="Trebuchet MS"
+                />
+            <TextBox 
+                Style="{StaticResource InputTextBoxStyle}"
+                Grid.Row="1" 
+                Grid.Column="0" 
+                Grid.ColumnSpan="2"
+                Width="500"
+                Height="50"
+                Text="{Binding UserLogin, UpdateSourceTrigger=PropertyChanged}"
+                >
+            </TextBox>
+            <TextBlock
+                Style="{StaticResource SpanDefoult}"
+                Margin="105 0 0 0"
+                VerticalAlignment="Bottom"
+                FontSize="20"
+                Grid.Row="2" 
+                Grid.Column="0" 
+                Text="Введите пароль" FontFamily="Trebuchet MS"
+                />
+            <customcontrols:ProjectPasswordBox
+                Grid.Row="3" 
+                Grid.Column="0" 
+                Grid.ColumnSpan="2"
+                Width="500"
+                Height="50"
+                Password="{Binding UserPassword,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+            
+            <Button
+                Content="Авторизоваться"
+                Style="{StaticResource PurpleButton}"
+                Margin="20 0 0 10"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                Grid.Column="0"
+                Grid.Row="5"
+                Width="180"
+                Height="50"
+                Command="{Binding SubmitAuthorization}"
+                />
+        </Grid>
+    </Border>
+</UserControl>

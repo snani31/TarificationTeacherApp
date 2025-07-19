@@ -1,0 +1,21 @@
+﻿<Application x:Class="TerificationTeacherApp.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:TerificationTeacherApp">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles\ControllStyles\MenuRadiobuttonStyles.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="Styles\ControllStyles\ButtonStyle.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="Styles\ControllStyles\ProjectSpans.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="Styles\ControllStyles\TextBoxInputStyle.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="Styles\ControllStyles\ChekBoxStyle.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="Styles\ControllStyles\DataGridStyle.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="Styles\ControllStyles\ComboboxStyle.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="Styles\ControllStyles\ScrollBarStyle.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="Styles\ControllStyles\ItemContainerStyle.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="Styles\ControllStyles\CalendarStyle.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

@@ -1,0 +1,254 @@
+﻿<UserControl x:Class="TerificationTeacherApp.View.SelectedTuskNewGradeDataPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TerificationTeacherApp.View"
+               mc:Ignorable="d" 
+      d:DesignHeight="520" d:DesignWidth="750">
+    <Border
+        Height="520"
+        Width="750"
+        BorderThickness="0"
+        Background="#252930"
+        CornerRadius="25">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+            <Button Style="{StaticResource PurpleButton}"
+                    Content="Назад"
+                    Width="200"
+                    Height="50"
+                    HorizontalAlignment="Left"
+                    Margin="10 0 0 0"
+                    Command="{Binding BackTusksForm}"/>
+            <Button Style="{StaticResource PurpleButton}"
+                    Content="Оценить"
+                    Width="200"
+                    Height="50"
+                    HorizontalAlignment="Right"
+                    Margin="10 0 10 0"
+                    Command="{Binding MakeNewRatingForTusk}"/>
+            <Border
+                    CornerRadius="0 10 70 0"
+                    Grid.Row="1"
+                    Padding="1"
+                    >
+                <Border.Background>
+                    <LinearGradientBrush>
+                        <GradientStop 
+                            Color="#f28a03" Offset="0.0"
+                            />
+                        <GradientStop 
+                            Color="#02fffe" Offset="1"
+                            />
+                    </LinearGradientBrush>
+                </Border.Background>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Border
+                        HorizontalAlignment="Left"
+                        Margin="15 0 0 0"
+                        Grid.Column="0"
+                            CornerRadius="100"
+                            Width="90"
+                            Height="90"
+                            BorderThickness="2"
+                            BorderBrush="White"
+                            Background="Black">
+                        <Image
+                            Width="70"
+                            Height="70"
+                            Source="/Styles/Icons/EmpthyUserIcon50.png"
+                                    VerticalAlignment="Center"/>
+                    </Border>
+                    <TextBlock
+                        Style="{StaticResource SpanDefoult}"
+                        FontWeight="DemiBold"
+                        FontSize="20"
+                        Margin="10"
+                        TextAlignment="Justify"
+                        TextWrapping="Wrap"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Grid.Column="1"
+                        Text="{Binding StydentFIO}"/>
+                </Grid>
+            </Border>
+            <Border
+                Grid.Row="2"
+                Margin="10"
+                CornerRadius="25"
+                BorderThickness="3"
+                BorderBrush="AliceBlue"
+                    >
+                <ScrollViewer
+                    Margin="5">
+                    <ScrollViewer.Resources>
+                        <Style TargetType="ScrollBar" BasedOn="{StaticResource ScrollBarProjectStyle}"/>
+                    </ScrollViewer.Resources>
+                    <StackPanel Grid.Column="1">
+                        <TextBlock
+                        Style="{StaticResource SpanDefoult}"
+                        FontWeight="DemiBold"
+                        FontSize="30"
+                        Margin="10"
+                        TextAlignment="Center"
+                        TextWrapping="Wrap"
+                        HorizontalAlignment="Center"
+                        Text="{Binding DisciplineTytle}"/>
+                        <TextBlock
+                        Style="{StaticResource SpanDefoult}"
+                        FontWeight="DemiBold"
+                        FontSize="20"
+                        Margin="10"
+                        TextAlignment="Justify"
+                        TextWrapping="Wrap"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Text="{Binding TuskTytle, StringFormat= Имя задания: {0}}"/>
+                        <TextBlock
+                        Style="{StaticResource SpanDefoult}"
+                        FontWeight="DemiBold"
+                        FontSize="20"
+                        Margin="10"
+                        TextAlignment="Justify"
+                        TextWrapping="Wrap"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Text="{Binding TuskStatus, StringFormat= Статус задания: {0}}"/>
+                        <TextBlock
+                        Style="{StaticResource SpanDefoult}"
+                        FontWeight="DemiBold"
+                        FontSize="20"
+                        Margin="10"
+                        TextAlignment="Justify"
+                        TextWrapping="Wrap"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Text="{Binding AssignmentDate , StringFormat= Запланировання дата сдачи: {0}}"/>
+                        <TextBlock
+                        Style="{StaticResource SpanDefoult}"
+                        FontWeight="DemiBold"
+                        FontSize="20"
+                        Margin="10"
+                        TextAlignment="Justify"
+                        TextWrapping="Wrap"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Text= "Суть задания:"/>
+                        <TextBox
+                            IsReadOnly="True"
+                            TextWrapping="Wrap"
+                            Style="{StaticResource TuskDataTextBoxStyle}"
+                            Margin="20 10"
+                            MinHeight="100"
+                            Width="650"
+                            Text="{Binding TuskEssence, Mode=OneWay}"/>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="100"/>
+                                <RowDefinition Height="2*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock 
+                        Grid.Column="0"
+                        Margin="20 10"
+                        VerticalAlignment="Bottom"
+                        HorizontalAlignment="Left"
+                        Text="Напишите примечание :" 
+                               Style="{StaticResource SpanDefoult}"
+                               FontSize="20"
+                               FontWeight="DemiBold"/>
+                            <TextBox
+                            Grid.Column="0"
+                            Grid.Row="1"
+                            TextWrapping="Wrap"
+                            Style="{StaticResource TuskDataTextBoxStyle}"
+                            Margin="20 10"
+                            MinHeight="100"
+                            Width="auto"
+                                Text="{Binding GradeFootnote, Mode=OneWayToSource}"/>
+                            <TextBlock 
+                               Grid.Column="1"
+                               Margin="10"
+                               VerticalAlignment="Bottom"
+                               HorizontalAlignment="Right"
+                               Text="Выберите оценку :" 
+                               Style="{StaticResource SpanDefoult}"
+                               FontSize="20"
+                               FontWeight="DemiBold"/>
+                            <ComboBox 
+                                SelectedValue="{Binding SelectedGrade, Mode=OneWayToSource}"
+                                VerticalAlignment="Top"
+                                Grid.Column="1"
+                                Grid.Row="1"
+                                Style="{StaticResource ComboBoxGrades}"
+                                Width="200"
+                                Height="230"
+                                Margin="10 10 20 10"
+                                Padding="0"
+                                HorizontalAlignment="Right"
+                                ItemsSource="{Binding GradeList}"
+                                ToolTip="{Binding RelativeSource={RelativeSource Mode=Self}, Path=SelectedValue.GradeTytle , Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" >
+                                <ComboBox.Resources>
+                                    <Style TargetType="ScrollBar" BasedOn="{StaticResource ScrollBarProjectStyle}"/>
+                                </ComboBox.Resources>
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border x:Name="brd" 
+                                    Width="150" 
+                                    MinHeight="150" 
+                                    CornerRadius="5">
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="2*"/>
+                                                    <RowDefinition/>
+                                                </Grid.RowDefinitions>
+                                                <Border x:Name="InBrd"
+                                        Grid.Row="0"
+                                        CornerRadius="5"
+                                        Background="{Binding GradeColorBackground}"
+                                        BorderThickness="2"
+                                        BorderBrush="{Binding GradeColorBrush}"
+                                        Width="150"
+                                        Height="150">
+                                                    <Image Width="100"
+                                           Height="100"
+                                           Source="{Binding GradePicture}"
+                                           />
+                                                </Border>
+                                                <TextBlock 
+                                   TextAlignment="Center"
+                                   FontWeight="DemiBold"
+                                   TextWrapping="Wrap"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Top"
+                                   Margin="0 10 0 0"
+                                   Style="{StaticResource SpanDefoult}"
+                                   Grid.Row="1"
+                                   Width="auto"
+                                   Text="{Binding GradeTytle}"
+                                   FontSize="16"/>
+                                            </Grid>
+                                        </Border>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                        </Grid>
+                    </StackPanel>
+                </ScrollViewer>
+            </Border>
+        </Grid>
+    </Border>
+
+</UserControl>

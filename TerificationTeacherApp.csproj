@@ -1,0 +1,288 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8472D189-3C8A-4CB4-BFC7-7951F528C96E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>TerificationTeacherApp</RootNamespace>
+    <AssemblyName>TerificationTeacherApp</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>ChucIcon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Commands\CloseApplicationCommand.cs" />
+    <Compile Include="Commands\CollapseApplicationCommand.cs" />
+    <Compile Include="Commands\CommandBase.cs" />
+    <Compile Include="Commands\GoHyperlinkCommand.cs" />
+    <Compile Include="Commands\NavigationCommand.cs" />
+    <Compile Include="Commands\MakeAuthorisationCommand.cs" />
+    <Compile Include="Commands\NewTuskRatingCommand.cs" />
+    <Compile Include="Commands\RefreshFiltrsCommand.cs" />
+    <Compile Include="Commands\UploadNewTuskCommand.cs" />
+    <Compile Include="CustomControls\MenuRadiobutton.cs" />
+    <Compile Include="CustomControls\ProjectPasswordBox.xaml.cs">
+      <DependentUpon>ProjectPasswordBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StaticData\ConnectionParams.cs" />
+    <Compile Include="StaticData\ProjectEventHandlers.cs" />
+    <Compile Include="Stores\NavigationStore.cs" />
+    <Compile Include="Stores\SessionDataStore.cs" />
+    <Compile Include="ViewModel\AboutProgrammPageViewModel.cs" />
+    <Compile Include="ViewModel\AddNewTuskViewModel.cs" />
+    <Compile Include="ViewModel\AuthorisationPageViewModel.cs" />
+    <Compile Include="ViewModel\ComboboxItemViewModel.cs" />
+    <Compile Include="ViewModel\DisciplineListRecordViewModel.cs" />
+    <Compile Include="ViewModel\GradeRecordViewModel.cs" />
+    <Compile Include="ViewModel\MeinWindowViewModel.cs" />
+    <Compile Include="ViewModel\SelectedTuskDataViewModel.cs" />
+    <Compile Include="ViewModel\SelectedUnratedTuskDataViewModel.cs" />
+    <Compile Include="ViewModel\StudentRecordViewModel.cs" />
+    <Compile Include="ViewModel\StudentsTuskRecordViewModel.cs" />
+    <Compile Include="ViewModel\StudentsTusksDataViewModel.cs" />
+    <Compile Include="ViewModel\TarificationPageViewModel.cs" />
+    <Compile Include="ViewModel\TarificationRecordViewModel.cs" />
+    <Compile Include="ViewModel\ViewModelBase.cs" />
+    <Compile Include="View\AboutProgrammPage.xaml.cs">
+      <DependentUpon>AboutProgrammPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AddNewTuskPage.xaml.cs">
+      <DependentUpon>AddNewTuskPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AuthorizationViewPage.xaml.cs">
+      <DependentUpon>AuthorizationViewPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SelectedTuskDataPage.xaml.cs">
+      <DependentUpon>SelectedTuskDataPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SelectedTuskNewGradeDataPage.xaml.cs">
+      <DependentUpon>SelectedTuskNewGradeDataPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\StudentTusksDataPage.xaml.cs">
+      <DependentUpon>StudentTusksDataPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TarificationTeacherData.xaml.cs">
+      <DependentUpon>TarificationTeacherData.xaml</DependentUpon>
+    </Compile>
+    <Page Include="CustomControls\ProjectPasswordBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Styles\ControllStyles\ButtonStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\ControllStyles\CalendarStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\ControllStyles\ChekBoxStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\ControllStyles\ComboboxStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\ControllStyles\DataGridStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\ControllStyles\ItemContainerStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\ControllStyles\MenuRadiobuttonStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\ControllStyles\ProjectSpans.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\ControllStyles\ScrollBarStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\ControllStyles\TextBoxInputStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AboutProgrammPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AddNewTuskPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AuthorizationViewPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SelectedTuskDataPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SelectedTuskNewGradeDataPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\StudentTusksDataPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TarificationTeacherData.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Resource Include="Styles\Fonts\Pribambas.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ModelSQLBussinessLogic\ModelSQLBussinessLogic.csproj">
+      <Project>{7e61d8dc-e4b1-448d-96b1-39fee013a095}</Project>
+      <Name>ModelSQLBussinessLogic</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Styles\Icons\EmpthyUserIcon50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Styles\Icons\Grades\Good.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Styles\Icons\Grades\Great.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Styles\Icons\Grades\Bad.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Styles\Icons\Grades\Satisfactorily.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Styles\Icons\Grades\NonGraded.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Styles\Icons\Grades\Plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Styles\Icons\MenuNavigateButtonIcons\TarificationIcon-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Styles\Icons\PowerOffButtonIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Styles\Pictures\Razrab%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Styles\Icons\MenuNavigateButtonIcons\StudentIcon-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Styles\Icons\MenuNavigateButtonIcons\AboutProgrammIcon-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Styles\Pictures\AbotuProgrammPicture.jpg" />
+    <Resource Include="Styles\Pictures\AuthorizationPicture.jpg" />
+    <Resource Include="Styles\Pictures\StudentsPicture.jpg" />
+    <Resource Include="Styles\Pictures\TarifucationPicture.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Styles\Icons\Grades\TimeOutGrade-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Styles\Icons\MenuNavigateButtonIcons\AuthorizationIcon-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Styles\Icons\CollapseWindpwIcon-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ChucIcon.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

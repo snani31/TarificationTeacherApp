@@ -1,0 +1,163 @@
+﻿<UserControl x:Class="TerificationTeacherApp.View.TarificationTeacherData"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TerificationTeacherApp.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="520" d:DesignWidth="750">
+    <Border 
+        BorderThickness="0"
+        Background="#252930"
+        CornerRadius="25">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="65"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid Margin="0 20 0 0" Grid.Row="0" Grid.ColumnSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <!-- Комбобокс групп студентов-->
+                    <ColumnDefinition Width="200"/>
+                    <!-- Кнопка ресет-->
+                    <ColumnDefinition Width="*"/>
+                    <!-- Комбобокс дисциплин-->
+                </Grid.ColumnDefinitions>
+                <ComboBox
+                    ToolTip="{Binding RelativeSource={RelativeSource Mode=Self}, Path=SelectedValue.StudentGroupName , Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" 
+                    Style="{StaticResource ComboBoxTest2}"
+                    SelectedValue="{Binding SelectedGroup}"
+                    IsEditable="False"
+                    Grid.Column="0"
+                    ItemsSource="{Binding GroupItems}"
+                    SelectedIndex="{Binding SelectedIndex, Mode=OneWay}"
+                    ItemContainerStyle="{StaticResource ComboboxItemStyle}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <TextBlock 
+                                   VerticalAlignment="Top"
+                                   MaxWidth="250"
+                                   Margin="10 5 0 0"
+                                   FontSize="14"
+                                   Style="{StaticResource SpanDefoult}"
+                                   FontWeight="DemiBold"
+                                   TextWrapping="Wrap"
+                                   Text="{Binding StudentGroupName}"
+                                    />
+                            </Grid>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <Button
+                    FontSize="20"
+                    Style="{StaticResource DefoultButton}"
+                    Command="{Binding RefreshFilters}"
+                    Content="Сброс"
+                    Grid.Column="1">
+                </Button>
+                <ComboBox
+                    ToolTip="{Binding RelativeSource={RelativeSource Mode=Self}, Path=SelectedValue.DisciplineName , Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                    Style="{StaticResource ComboBoxTest2}"
+                    SelectedValue="{Binding SelectedDiscipline}"
+                    IsEditable="False"
+                    Grid.Column="2"
+                    ItemsSource="{Binding DisciplineItems}"
+                    SelectedIndex="{Binding SelectedIndex, Mode=OneWay}"
+                    ItemContainerStyle="{StaticResource ComboboxItemStyle}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <TextBlock 
+                                   VerticalAlignment="Top"
+                                   MaxWidth="250"
+                                   Margin="10 5 0 0"
+                                   FontSize="14"
+                                   Style="{StaticResource SpanDefoult}"
+                                   FontWeight="DemiBold"
+                                   Text="{Binding DisciplineName}" 
+                                   TextWrapping="Wrap"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </Grid>
+            <Border 
+                Padding="0"
+                Grid.Row="1"
+                Background="#3c4452"
+                CornerRadius="25"
+                Margin="5 0">
+                <DataGrid
+                      Padding="0"
+                      Margin="15"
+                      IsReadOnly="True"
+                      CanUserResizeRows="False"
+                      AutoGenerateColumns="False"
+                      CanUserResizeColumns="True"
+                      CanUserSortColumns="True"
+                      CanUserReorderColumns="False"
+                      ColumnWidth="SizeToCells"
+                      RowHeaderWidth="0"
+                      Height="auto"
+                      ColumnHeaderStyle="{StaticResource GridColumnHeaderStyle}"
+                      Background="#252930"
+                      BorderThickness="0"
+                      ItemsSource="{Binding WorkloadsUser}"
+                      GridLinesVisibility="None"
+                      VerticalScrollBarVisibility="Visible" Grid.ColumnSpan="2"
+                      >
+                    <DataGrid.Resources>
+                        <Style TargetType="ScrollBar" BasedOn="{StaticResource ScrollBarProjectStyle}"/>
+                        <Style TargetType="DataGridCell" BasedOn="{StaticResource GridCellStyle}">
+                            <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self},Path=Content.Text}"/>
+                        </Style>
+                    </DataGrid.Resources>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn
+                        Header="Количество часов"
+                        Width="*"
+                        Binding="{Binding HourCount}"
+                        />
+                        <DataGridTextColumn
+                        Header="Группа"
+                        Width="*"
+                        Binding="{Binding StudentGroupName}"
+                        />
+                        <DataGridTextColumn
+                        Header="Предмет"
+                        Width="*"
+                        Binding="{Binding Discipline}"
+                        />
+                        <DataGridTextColumn
+                        Header="Преподаватель"
+                        Width="*"
+                        Binding="{Binding TeacherName}"
+                        />
+                    </DataGrid.Columns>
+
+                </DataGrid>
+            </Border>
+            <StackPanel 
+                Grid.Row="1"
+                Orientation="Horizontal" Grid.ColumnSpan="2" Margin="0,341,0,0" Grid.RowSpan="2">
+                <TextBlock
+                Style="{StaticResource SpanDefoult}"
+                FontSize="25"
+                VerticalAlignment="Center"
+                Margin="20 0 0 0"
+                Text="Общее количество часов:"
+                />
+                <TextBlock
+                Style="{StaticResource SpanDefoult}"
+                FontSize="25"
+                VerticalAlignment="Center"
+                Margin="20 0 0 0"
+                Text="{Binding HoursFilteredCount}"
+                />
+            </StackPanel>
+        </Grid>
+    </Border>
+</UserControl>
